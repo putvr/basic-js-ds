@@ -14,7 +14,7 @@ const { ListNode } = require("../extensions/list-node.js");
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
 class Queue {
-  constructor() {
+  constructor() {    
     this.elements = undefined;
   }
 
@@ -24,14 +24,14 @@ class Queue {
     if (!this.elements) {
       this.elements = n;
       return;
-    }
+    } 
 
     let t = this.elements;
-
-    while (t.next) {
+    
+    while(t.next) {        
       t = t.next;
     }
-
+    
     t.next = n;
   }
 
@@ -40,9 +40,10 @@ class Queue {
       return;
     }
 
-    const { value, next } = this.elements;
-    this.elements = next;
-    return value;
+    let t = this.elements;
+    this.elements = t.next;
+
+    return t.value;
   }
 
   getUnderlyingList() {
